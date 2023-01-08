@@ -1,4 +1,6 @@
 spring:
+  cache:
+    type: redis
   cloud:
     gateway:
       default-filters:
@@ -8,12 +10,16 @@ spring:
           uri: http://localhost:9191
           predicates:
             - Path=/product/**
+        - id: user-resource-server
+          uri: http://localhost:9191
+          predicates:
+            - Path=/market/**
   security:
     oauth2:
       client:
         provider:
           my-keycloak-provider:
-            issuer-uri: http://localhost:8080/realms/My-Realm
+            issuer-uri: http://localhost:8080/realms/cargoes
             # Individual properties can also be provided this way
 #            token-uri: http://localhost:8080/auth/realms/amrutrealm/protocol/openid-connect/token
 #            authorization-uri: http://localhost:8080/auth/realms/amrutrealm/protocol/openid-connect/auth
@@ -23,12 +29,16 @@ spring:
           keycloak-spring-gateway-client:
             provider: my-keycloak-provider
             scope: openid
-            client-id: spring-gateway-client
-            client-secret: 3RhEF8pqKTANrQ6BhfxaYVmcjTXsDK0u
+            client-id: login-app
+            client-secret: NYcLPDlSEaDSbXrD9cKbN8cbw8MDnDpv
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/keycloak"
+#  session:
+#    store-type: redis
+#  redis:
+#    host: localhost
+#    port: 6379
 
-# Enable these to debug the Authorization flow
 logging:
     level:
       org:
@@ -43,3 +53,4 @@ management:
     web:
       exposure:
         include: "*"
+
