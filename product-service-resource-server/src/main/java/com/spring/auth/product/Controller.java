@@ -1,4 +1,4 @@
-package com.amrut.prabhu.product;
+package com.spring.auth.product;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

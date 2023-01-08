@@ -1,4 +1,4 @@
-package com.amrut.prabhu.product;
+package com.spring.auth.product;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.converter.Converter;

@@ -1,4 +1,4 @@
-package com.amrut.prabhu.oauth2.client;
+package com.spring.auth.oauth2.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
